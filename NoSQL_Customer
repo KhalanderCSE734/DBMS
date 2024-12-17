@@ -1,0 +1,19 @@
+Create Table: 
+db.createCollection("Customer"); 
+
+Inserting Values:
+db.Customer.insertMany([{custid: 1, acc_bal:10000, acc_type:
+"Saving"}, {custid: 1, acc_bal:20000, acc_type: "Checking"}, {custid: 3,
+acc_bal:50000, acc_type: "Checking"}, {custid: 4, acc_bal:10000,
+acc_type: "Saving"}, {custid: 5, acc_bal:2000, acc_type: "Checking"}]);
+
+db.student.find();
+db.Customer.find({acc_bal: {$gt: 12000}, acc_type:"Checking"});
+db.Customer.aggregate([{$group:{_id:"$custid", minBal:{$min:"$acc_bal"}, maxBal:
+{$max:"$acc_bal"}}}]);
+mongoexport mongodb+srv://Likhith:@cluster0.xbmgopf.mongodb.net/test --collection=Customer -- out D:\1BM23CS170\st.json 
+50
+db.Customer.drop(); 
+● Exporting the collection to a json file 
+mongoimport mongodb+srv://Likhith:@cluster0.xbmgopf.mongodb.net/test --collection=Customer --file  D:\1BM23CS170\st.json 
+db.Customer.find(); 
